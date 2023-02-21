@@ -176,9 +176,15 @@ def update_W1():
             
             if os.path.exists('/sys/devices/w1_bus_master1/'+ x +'/temperature'):
                 fd  = open('/sys/devices/w1_bus_master1/'+ x +'/temperature','r')
-                value = float(fd.read())
-                value = round(value / 1000.0, 1)
-                dbusservice['W1-temp'+ x]['/Temperature'] = value
+		value = fd.read()
+		if value == '':
+			# Fix ValueError if temperature reads empty string
+			dbusservice['W1-temp'+ x]['/Temperature'] = -1
+                	dbusservice['W1-temp'+ x]['/Connected'] = 0
+		else:
+			value = float(value)
+			value = round(value / 1000.0, 1)
+			dbusservice['W1-temp'+ x]['/Temperature'] = value
                 fd.close
             else:
                 dbusservice['W1-temp'+ x]['/Temperature'] = -1
