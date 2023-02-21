@@ -1,3 +1,5 @@
+v0.5:
+	Fix for 1-Wire temperature sensor returning blank value
 
 v0.4:
 	Fork from LHardwick-git/Victron-Service, with support to Kevin Windrem's Setuphelper
