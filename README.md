@@ -1,4 +1,8 @@
 ## Venus OS Temperature Service
+### Fork from Rikkert-RS VenusOS-TemperatureService
+
+Fixes a crash if a 1-Wire temperature sensor returns a blank value.
+
 ### Fork from LHardwick Victron-Service
 
 This is a service to publish temperature type data onto the DBus of VenusOs running on a Victron GX device.  
